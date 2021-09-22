@@ -25,29 +25,46 @@ import javax.inject.Named;
 public class ControladorDeBandas implements Serializable {
     
     private Banda banda = new Banda();
-    private List<Integrante> integrantesBanda = new ArrayList<>();
-    private Gerente gerente = new Gerente();
     
     @Inject
     private Bandas bandas;
+    
+    public String remover (Banda banda) {
+        
+        this.bandas.remover(banda);
+        
+        return "/Banda/list";
+        
+    }
+    
+    public String editar(Banda banda) {
+        
+        this.banda = banda;
+        
+        return "/Banda/edit?faces-redirect=true";
+        
+    }
 
     public String adicionar () {
         
-        this.banda.setIntegrantes(this.integrantesBanda);
-        this.banda.setGerente(this.gerente);
-        
-        this.bandas.salvarBanda(this.banda);
-        
+        if ( this.banda.getId() > 0 ) {
+            
+            this.bandas.atualizar(banda);
+            
+        } else {
+            
+            this.bandas.salvarBanda(this.banda);
+            
+        }
+             
         this.banda = new Banda();
-        this.integrantesBanda = new ArrayList<>();
-        this.gerente = new Gerente();
         
         return "/Banda/list?faces-redirect=true";
         
     }
     
-    public List<Gerente> listaDeGerentes() {
-        return this.bandas.todosOsGerentes();
+    public List<Banda> listar () {
+        return this.bandas.todasAsBandas();
     }
     
     public Banda getBanda() {
@@ -58,24 +75,5 @@ public class ControladorDeBandas implements Serializable {
         this.banda = banda;
     }
 
-    
-    public List<Integrante> getIntegrantesBanda() {
-        return integrantesBanda;
-    }
-
-    public void setIntegrantesBanda(List<Integrante> integrantesBanda) {
-        this.integrantesBanda = integrantesBanda;
-    }
-
-    public Gerente getGerente() {
-        return gerente;
-    }
-
-    public void setGerente(Gerente gerente) {
-        this.gerente = gerente;
-    }
-    
-    
-    
-    
+  
 }

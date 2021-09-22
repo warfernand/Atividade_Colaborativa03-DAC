@@ -15,27 +15,8 @@
             <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
             <h:inputText  id="nomeFantasia" value="#{controladorDeBandas.banda.nomeFantasia}" />
        
-            <h:outputLabel value="Lista de Integrantes" for="listaDeIntegrantes" />
-            <h:selectManyCheckbox 
-                id="listaDeIntegrantes" 
-                value="#{controladorDeBandas.integrantesBanda}" 
-                converter="converter.integrante" >
-                <f:selectItems  
-                    value="#{controladorDeIntegrantes.listar()}" 
-                    var="integrante" 
-                    itemLabel="#{integrante.cpf}" 
-                />
-            </h:selectManyCheckbox>
-            
-            <h:outputLabel  value="Gerente" for="gerenteBanda" />
-            <h:selectOneMenu id="gerenteBanda" value="#{controladorDeBandas.gerente}" converter="converter.gerente" >
-                <f:selectItems 
-                    value="#{controladorDeBandas.listaDeGerentes()}"
-                    var="gerente"
-                    itemLabel="#{gerente.cpf}"
-                />
-            </h:selectOneMenu>
-            
+            <br />
+  
             <h:commandButton 
                 value="Salvar"
                 action="#{controladorDeBandas.adicionar()}"

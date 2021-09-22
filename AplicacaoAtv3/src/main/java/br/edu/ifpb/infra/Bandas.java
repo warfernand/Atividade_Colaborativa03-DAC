@@ -50,21 +50,17 @@ public class Bandas {
        .getResultList();
    }
     
-   public Banda recuperarBandaPorLocaldeOrigem(String localDeOrigem) {
+   public List<Banda> recuperarBandasPorLocaldeOrigem(String localDeOrigem) {
        
        List<Banda> todas = manager.createQuery("FROM Banda b", Banda.class).getResultList();
+       List<Banda> bandasEncontradas = new ArrayList<>();
        
-       for ( Banda banda : todas ) {
-           
-           if ( banda.getLocalDeOrigem().equals(localDeOrigem) ) {
-               return banda;
-           }
-           
-       }
+       todas.stream().filter(banda -> ( banda.getLocalDeOrigem().equals(localDeOrigem) )).forEachOrdered(banda -> {
+           bandasEncontradas.add(banda);
+        });
        
-       return null;
-       
-   }
+       return bandasEncontradas;
+  }
    
    public Banda recuperarBandaPorNomeFantasia(String nomeFantasia) {
        

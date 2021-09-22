@@ -36,6 +36,13 @@ public class Integrante implements Serializable{
         this.dataDeNascimento = dataDeNascimento;
         this.cpf = cpf;
     }
+
+    public Integrante(int id, String nome, LocalDate dataDeNascimento, String cpf) {
+        this.id = id;
+        this.nome = nome;
+        this.dataDeNascimento = dataDeNascimento;
+        this.cpf = cpf;
+    }
     
     public int getId() {
         return id;

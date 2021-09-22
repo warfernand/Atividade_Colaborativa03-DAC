@@ -23,7 +23,11 @@ public class ConverterGerente implements Converter {
        
         Gerente gerente = this.gerentes.recuperarGerentePorCPf(string);
         
-        return gerente;
+        if (gerente != null) {
+            return gerente;
+        }
+        
+        return null;
         
     }
 

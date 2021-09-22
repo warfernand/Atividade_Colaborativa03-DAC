@@ -27,6 +27,7 @@ public class ControladorDeBuscas implements Serializable {
     
     private String resultadoDaBusca = "";
     private String BandaEcontrada = "";
+    private List<Banda> bandasLocalOrigem = new ArrayList<>();
     
     @Inject
     private Integrantes integrantes;
@@ -60,7 +61,7 @@ public class ControladorDeBuscas implements Serializable {
                 resultadoDaBusca = "Tipo: Gerente" + 
                         " Id " + gerente.getId() + 
                         " Nome: " + gerente.getNome() + 
-                        " Banda: " + ( (gerente.getBanda().getId() > 0) ? gerente.getBanda().getNomeFantasia() : "Nenhuma" ) + 
+                        " Banda: " + ( (gerente.getBanda() != null) ? gerente.getBanda().getNomeFantasia() : "Nenhuma" ) + 
                         " Email: " + gerente.getEmail() + 
                         " CPF: " + gerente.getCpf();
                 
@@ -82,20 +83,8 @@ public class ControladorDeBuscas implements Serializable {
     
     public String buscarPorLocalDeOrigem () { //Busca por Local De Origem
         
-        Banda banda = this.bandas.recuperarBandaPorLocaldeOrigem(this.localDeOrigem);
-        
-        if ( banda != null ) {
-            
-            this.BandaEcontrada = "Id: " + banda.getId() +
-                                    "Local De Origem: " + banda.getLocalDeOrigem() + 
-                                    "Nome Fantasia: " + banda.getNomeFantasia();
-            
-        } else {
-            
-            this.BandaEcontrada = "Desculpe, mas não existe nenhuma banda com esse local de origem";
-            
-        }
-        
+        this.bandasLocalOrigem = this.bandas.recuperarBandasPorLocaldeOrigem(this.localDeOrigem);
+     
         this.localDeOrigem = "";
         
         return "/Banda/search";
@@ -107,12 +96,6 @@ public class ControladorDeBuscas implements Serializable {
         Banda banda = this.bandas.recuperarBandaPorNomeFantasia(this.nomeFantasia);
         
         if ( banda != null ) {
-            
-            System.out.println("Lista de integrantes banda: ");
-            
-            this.integrantesBanda.forEach(integrante -> {
-                System.out.println(integrante.getNome() + "\n");
-            });
             
             this.integrantesBanda = banda.getIntegrantes();
             this.BandaEcontrada = "Id: " + banda.getId() +
@@ -180,6 +163,14 @@ public class ControladorDeBuscas implements Serializable {
 
     public void setIntegrantesBanda(List<Integrante> integrantesBanda) {
         this.integrantesBanda = integrantesBanda;
+    }
+
+    public List<Banda> getBandasLocalOrigem() {
+        return bandasLocalOrigem;
+    }
+
+    public void setBandasLocalOrigem(List<Banda> bandasLocalOrigem) {
+        this.bandasLocalOrigem = bandasLocalOrigem;
     }
     
     
