@@ -1,11 +1,16 @@
 /home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/infra/Integrantes.java
 /home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/converter/ConverterDataDeNascimento.java
+/home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/jsf/ControladorDeBandas.java
+/home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/domain/Integrante.java
+/home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/jsf/ControladorDeBuscas.java
+/home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/converter/ConverterData.java
 /home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/infra/Bandas.java
 /home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/domain/Banda.java
 /home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/domain/Gerente.java
-/home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/domain/Integrante.java
 /home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/converterColumn/ConveterCPF.java
 /home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/converterColumn/ConverterLocalDate.java
+/home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/converter/ConverterGerente.java
 /home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/infra/Gerentes.java
 /home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/domain/CPF.java
+/home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/converter/ConverterIntegrante.java
 /home/wendel/Atividade_Colaborativa03-DAC/AplicacaoAtv3/src/main/java/br/edu/ifpb/jsf/ControladorDeIntegrantes.java

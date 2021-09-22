@@ -1,8 +1,8 @@
-
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Atividade 3</title>
     </h:head>
@@ -13,9 +13,33 @@
             <h:outputLabel  value="Local de Origem" for="localDeOrigem" />
             <h:inputText id="localDeOrigem" value="#{controladorDeBandas.banda.localDeOrigem}"/>
             <h:outputLabel value="Nome Fantasia" for="nomeFantasia" />
-            <h:inputText  id="nomeFantasia" #{controladorDeBandas.banda.nomeFantasia} />
+            <h:inputText  id="nomeFantasia" value="#{controladorDeBandas.banda.nomeFantasia}" />
+       
+            <h:outputLabel value="Lista de Integrantes" for="listaDeIntegrantes" />
+            <h:selectManyCheckbox 
+                id="listaDeIntegrantes" 
+                value="#{controladorDeBandas.integrantesBanda}" 
+                converter="converter.integrante" >
+                <f:selectItems  
+                    value="#{controladorDeIntegrantes.listar()}" 
+                    var="integrante" 
+                    itemLabel="#{integrante.cpf}" 
+                />
+            </h:selectManyCheckbox>
             
+            <h:outputLabel  value="Gerente" for="gerenteBanda" />
+            <h:selectOneMenu id="gerenteBanda" value="#{controladorDeBandas.gerente}" converter="converter.gerente" >
+                <f:selectItems 
+                    value="#{controladorDeBandas.listaDeGerentes()}"
+                    var="gerente"
+                    itemLabel="#{gerente.cpf}"
+                />
+            </h:selectOneMenu>
             
+            <h:commandButton 
+                value="Salvar"
+                action="#{controladorDeBandas.adicionar()}"
+            />
             
         </h:form>
         

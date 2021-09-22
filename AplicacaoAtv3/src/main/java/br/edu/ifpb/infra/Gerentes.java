@@ -44,5 +44,23 @@ public class Gerentes {
         
     }
     
+    public Gerente recuperarGerentePorCPf(String cpf) {
+        
+        List<Gerente> todos = manager.createQuery("FROM Gerente g", Gerente.class).getResultList();
+        
+        for ( Gerente gerente : todos ) {
+            
+            if ( gerente.getCpf().equals(cpf) ) {
+                
+               return gerente;
+                
+            }
+        
+        }
+        
+        return null;
+        
+    }
+    
     
 }

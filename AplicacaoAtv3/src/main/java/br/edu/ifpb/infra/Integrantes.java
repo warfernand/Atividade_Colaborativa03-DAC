@@ -6,10 +6,16 @@
 package br.edu.ifpb.infra;
 
 import br.edu.ifpb.domain.Integrante;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.Month;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -46,6 +52,36 @@ public class Integrantes {
         
       manager.merge(integrante);
         
+    }
+    
+    public Integrante recuperarIntegrantePorCpf(String cpf) {
+        
+        List<Integrante> todos = manager.createQuery("FROM Integrante t", Integrante.class).getResultList();
+        
+        for ( Integrante integrante : todos ) {
+            
+            if ( integrante.getCpf().equals(cpf) ) {
+                return integrante;
+            }
+            
+        }
+        
+        return null;
+        
+        
+    }
+    
+    public List<Integrante> recuperarIntegrantePorDataNascimento () { //recupera integrantes nacidos entre 01/01/2000 e 20/04/2016.
+     
+        List<Integrante> integrantes = new ArrayList<>();
+        
+        integrantes = manager.createQuery("FROM Integrante i WHERE i.dataDeNascimento BETWEEN :dataInicial and :dataFinal", Integrante.class)
+                .setParameter("dataInicial", LocalDate.of(2000, 1, 1))
+                .setParameter("dataFinal", LocalDate.of(2016,4,20))
+                .getResultList();
+        
+     
+        return integrantes;
     }
     
 }

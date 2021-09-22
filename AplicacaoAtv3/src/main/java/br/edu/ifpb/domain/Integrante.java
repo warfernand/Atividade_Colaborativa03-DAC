@@ -8,6 +8,8 @@ import javax.persistence.Convert;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -20,6 +22,7 @@ public class Integrante implements Serializable{
     @GeneratedValue
     private int id;
     private String nome;
+    @Temporal(value = TemporalType.DATE)
     @Convert(converter = ConverterLocalDate.class)
     private LocalDate dataDeNascimento;
     private String cpf;

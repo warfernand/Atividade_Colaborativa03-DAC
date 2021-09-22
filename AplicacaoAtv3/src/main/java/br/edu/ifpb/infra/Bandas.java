@@ -2,6 +2,7 @@
 package br.edu.ifpb.infra;
 
 import br.edu.ifpb.domain.Banda;
+import br.edu.ifpb.domain.Gerente;
 import br.edu.ifpb.domain.Integrante;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,22 +45,42 @@ public class Bandas {
         
     }
     
-    public List<Integrante> recuperarIntegrantesDisponiveis (Banda banda) {
-     
-        List<Integrante> todos = manager.createQuery("FROM Integrante i", Integrante.class).getResultList();
-        
-        List<Integrante> integrantesDisponiveis = new ArrayList<>();
-        
-        for (Integrante integrante : todos) {
-            
-            if (!banda.getIntegrantes().contains(integrante)) {
-                integrantesDisponiveis.add(integrante);
-            }
-            
-        }
-        
-        return integrantesDisponiveis;
-        
-    }
+   public List<Gerente> todosOsGerentes () {
+       return manager.createQuery("FROM Gerente g", Gerente.class)
+       .getResultList();
+   }
     
+   public Banda recuperarBandaPorLocaldeOrigem(String localDeOrigem) {
+       
+       List<Banda> todas = manager.createQuery("FROM Banda b", Banda.class).getResultList();
+       
+       for ( Banda banda : todas ) {
+           
+           if ( banda.getLocalDeOrigem().equals(localDeOrigem) ) {
+               return banda;
+           }
+           
+       }
+       
+       return null;
+       
+   }
+   
+   public Banda recuperarBandaPorNomeFantasia(String nomeFantasia) {
+       
+       List<Banda> todas = manager.createQuery("FROM Banda b", Banda.class).getResultList();
+       
+       for ( Banda banda : todas ) {
+           
+           if ( banda.getNomeFantasia().equals(nomeFantasia) ) {
+               return banda;
+           }
+           
+       }
+       
+       return null;
+       
+   }
+   
+   
 }

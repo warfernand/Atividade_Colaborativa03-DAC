@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Atividade 3</title>
+    </h:head>
+    
+    <h2>Integrantes que nasceram entre 01/01/2000 e 20/04/2016: </h2>
+    
+    <h:dataTable rendered="#{controladorDeIntegrantes.listarPorDataDeNascimento().size() > 0}" 
+                 value="#{controladorDeIntegrantes.listarPorDataDeNascimento()}" 
+                 var="integrante" 
+    >
+        
+         <h:column>
+                    <f:facet name="header" >Id</f:facet>
+                    #{integrante.id}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header" >Nome</f:facet>
+                    #{integrante.nome}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header" >Data de Nascimento</f:facet>
+                    #{integrante.dataDeNascimento}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header" >CPF</f:facet>
+                    #{integrante.cpf}
+                </h:column>
+    </h:dataTable>
+    
+    <h:outputText 
+        rendered="#{controladorDeIntegrantes.listarPorDataDeNascimento().size() == 0}"
+        value="Não há nenhum integrante cadastrado no sistema que nasceu entre 01/01/2000 e 20/04/2016"
+    />
+    
+</html>
+
+
+

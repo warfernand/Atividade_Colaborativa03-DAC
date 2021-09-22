@@ -6,8 +6,7 @@
 package br.edu.ifpb.converterColumn;
 
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
+import java.sql.Date;
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
@@ -16,21 +15,21 @@ import javax.persistence.Converter;
 public class ConverterLocalDate implements AttributeConverter<LocalDate, Date>{
 
     @Override
-    public Date convertToDatabaseColumn(LocalDate data) {
-         if (data == null) {
+    public Date convertToDatabaseColumn(LocalDate x) {
+        if (x == null) {
             return null;
-        }
-        return Date.from(data.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        }   
+        return Date.valueOf(x);
     }
 
     @Override
-    public LocalDate convertToEntityAttribute(Date data) {
-        
-        if (data == null) {
+    public LocalDate convertToEntityAttribute(Date y) {
+        if (y == null) {
             return null;
         }
-        return data.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-        
+        return y.toLocalDate();
     }
+
+
     
 }
