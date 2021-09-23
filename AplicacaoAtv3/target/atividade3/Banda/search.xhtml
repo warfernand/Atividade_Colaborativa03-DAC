@@ -1,25 +1,26 @@
 <?xml version='1.0' encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Atividade 3</title>
-    </h:head>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      template="../template.xhtml">
     
-    <h:body>
         
-        <h:form>
-            <h2>Busca por Local de Origem: </h2> <br />
+    <ui:define name="center" >
+        
+         <h:form>
+            <h2 class="header center orange-text">Buscar de bandas por Local de Origem: </h2> <br />
             <h:outputLabel value="Digite aqui o local de origem da banda: " for="localDeOrigem" /> 
             <h:inputText  value="#{controladorDeBuscas.localDeOrigem}" id="localDeOrigem" />
-            <h:commandButton  value="Buscar" action="#{controladorDeBuscas.buscarPorLocalDeOrigem()}" />
+            <h:commandButton  value="Buscar" action="#{controladorDeBuscas.buscarPorLocalDeOrigem()}" class="btn green white-text" />
             <hr />
             
             <h:dataTable 
                 rendered="#{controladorDeBuscas.bandasLocalOrigem.size() > 0}"
                 value="#{controladorDeBuscas.bandasLocalOrigem}"
                 var="banda"
+                class="striped highlight"
             >
                 <h:column>
                     <f:facet name="header" >Id</f:facet>
@@ -39,7 +40,7 @@
             
         </h:form>
         
-    </h:body>
+    </ui:define>
     
-</html>
+</ui:composition>
 

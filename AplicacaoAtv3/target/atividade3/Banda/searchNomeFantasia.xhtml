@@ -1,22 +1,23 @@
 <?xml version='1.0' encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-    <h:head>
-        <title>Atividade 3</title>
-    </h:head>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      template="../template.xhtml"
+  >
     
-    <h:body>
+    
+    <ui:define name="center" >
         
         <h:form>
-            <h2>Busca por Nome Fantasia: </h2> <br />
+            <h2 class="header center orange-text">Buscar banda por Nome Fantasia: </h2> <br />
             <h:outputLabel value="Digite aqui o Nome Fantasia da banda: " for="nomeFantasia" /> 
             <h:inputText  value="#{controladorDeBuscas.nomeFantasia}" id="nomeFantasia" />
-            <h:commandButton  value="Buscar" action="#{controladorDeBuscas.buscarPorNomeFantasia()}" />
+            <h:commandButton  value="Buscar" action="#{controladorDeBuscas.buscarPorNomeFantasia()}" class="btn green white-text" />
             <hr />
-            
-            <h:outputText value="#{controladorDeBuscas.bandaEcontrada}" />
+            <br />
+            <h:outputText value="#{controladorDeBuscas.bandaEcontrada}" class="orange-text" />
             
         </h:form>
         
@@ -28,6 +29,7 @@
             rendered="#{controladorDeBuscas.integrantesBanda.size() > 0}" 
             value="#{controladorDeBuscas.integrantesBanda}"
             var="integrante"
+            class="striped highlight"
         >
             <h:column>
                 <f:facet name="header" >Id</f:facet>
@@ -50,9 +52,9 @@
             </h:column>
             
         </h:dataTable>
+
         
-        
-    </h:body>
-    
-</html>
+    </ui:define>
+
+</ui:composition>
 

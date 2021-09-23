@@ -1,27 +1,26 @@
 <?xml version='1.0' encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Atividade 3</title>
-    </h:head>
-    
-    
-    
-    <h:body>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./template.xhtml">
+   
+    <ui:define name="center" >
         
-        <h:form>
-            <h2>Busca por CPF: </h2> <br />
-            <h:outputLabel value="Digite aqui o CPF a ser buscado: " for="cpf" /> 
-            <h:inputText  value="#{controladorDeBuscas.cpf}" id="cpf" />
-            <h:commandButton  value="Buscar" action="#{controladorDeBuscas.buscar()}" />
-            <hr />
-            
-            <h:outputText value="#{controladorDeBuscas.resultadoDaBusca}" />
-            
-        </h:form>
-        
-    </h:body>
+            <h:form>
+                <h2 class="header center orange-text">Busca por CPF: </h2> <br />
+                <h:outputLabel value="Digite aqui o CPF a ser buscado: " for="cpf" /> 
+                <h:inputText  value="#{controladorDeBuscas.cpf}" id="cpf" />
+                <h:commandButton  value="Buscar" action="#{controladorDeBuscas.buscar()}" class="btn green white-text"/>
+                <hr />
+
+                <h:outputText value="#{controladorDeBuscas.resultadoDaBusca}" class="orange-text" />
+
+            </h:form>
+         
+    </ui:define>
     
-</html>
+   
+    
+</ui:composition>
 
